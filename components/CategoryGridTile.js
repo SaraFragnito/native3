@@ -20,12 +20,12 @@ export default CategoryGridTile
 
 const styles = StyleSheet.create({
   gridItem: {
+    backgroundColor: "#84817a",
     flex: 1,
     margin: 16,
     height: 150,
     borderRadius: 8,
     elevation: 4,
-    backgroundColor: "white",
     shadowColor: "black",
     shadowOpacity: 0.25,
     shadowOffset: { width: 0, height: 2 },
