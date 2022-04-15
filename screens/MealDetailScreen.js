@@ -1,4 +1,4 @@
-import { View, Image, Text, StyleSheet } from "react-native"
+import { View, Image, Text, StyleSheet, ScrollView } from "react-native"
 import MealDetails from "../components/MealDetails"
 import { MEALS } from "../data/dummy-data"
 
@@ -7,7 +7,7 @@ function MealDetailScreen(props){
   const selectedMeal = MEALS.find((meal) => meal.id === mealId)
 
   return (
-    <View style={styles.rootContainer}>
+    <ScrollView style={styles.rootContainer}>
       <Text style={styles.title}>{selectedMeal.title}</Text>
       <Image source={{uri: selectedMeal.imageUrl}}  style={styles.image} />
       <View>
@@ -16,12 +16,12 @@ function MealDetailScreen(props){
           affordability={selectedMeal.affordability}
           complexity={selectedMeal.complexity}
         />
-        <Text style={styles.otherTitles}>Ingredients</Text>
-        {selectedMeal.ingredients.map(ingredient => <Text key={ingredient}>{ingredient}</Text>)}
-        <Text style={styles.otherTitles}>Steps</Text>
-        {selectedMeal.steps.map(steps => <Text key={steps}>{steps}</Text>)}
+        <Text style={styles.subtitle}>Ingredients</Text>
+        {selectedMeal.ingredients.map(ingredient => <Text style={styles.text} key={ingredient}>{ingredient}</Text>)}
+        <Text style={styles.subtitle}>Steps</Text>
+        {selectedMeal.steps.map(steps => <Text style={styles.text} key={steps}>{steps}</Text>)}
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
@@ -29,23 +29,35 @@ export default MealDetailScreen
 
 const styles = StyleSheet.create({
   rootContainer: {
-    flex: 1,
-    margin: 30
+    marginVertical: 30,
   },
   title: {
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
-    marginBottom: 16
   },
   image: {
     width: "100%",
-    height: 200,
-    borderRadius: 8
+    height: 350,
+    marginVertical: 10
   },
-  otherTitles: {
+  subtitle: {
+    fontSize: 18,
     fontWeight: "bold",
-    marginVertical: 16
+    marginVertical: 16,
+    textAlign: "center",
+    borderBottomColor: "black",
+    borderBottomWidth: 2
   },
+  text: {
+    borderRadius: 10,
+    color: "black",
+    backgroundColor: "#f7f1e3",
+    textAlign: "center",
+    paddingHorizontal: 16,
+    paddingVertical: 4,
+    marginHorizontal: 24,
+    marginVertical: 4
+  }
 })
 
