@@ -17,24 +17,24 @@ function MealDetailScreen(props){
 
   const mealId = props.route.params.mealId
   const selectedMeal = MEALS.find((meal) => meal.id === mealId)
-  // const mealIsFavorite = favoriteMealsCtx.ids.includes(mealId) - context
+  // const mealIsFavorite = favoriteMealsCtx.ids.includes(mealId) // context
   console.log(favoriteMealIds)
   const mealIsFavorite = favoriteMealIds.includes(mealId) // redux
   
   const changeFavoriteStatusHandler = () => {
     if (mealIsFavorite) {
-      // favoriteMealsCtx.removeFavorite(mealId) - context
-      dispatch(removeFavorite({id: mealId}))
+      // favoriteMealsCtx.removeFavorite(mealId) // context
+      dispatch(removeFavorite({id: mealId})) // redux
     } else {
-      // favoriteMealsCtx.addFavorite(mealId) - context
-      dispatch(addFavorite({id: mealId}))
+      // favoriteMealsCtx.addFavorite(mealId) // context
+      dispatch(addFavorite({id: mealId})) // redux
     }
    }
 
   useLayoutEffect(() => {
     props.navigation.setOptions({
       headerRight: () => {
-        <IconButton 
+        return <IconButton 
           onPress={changeFavoriteStatusHandler} 
           icon={mealIsFavorite ? "heart" : "heart-outline"} 
           color="black" 
